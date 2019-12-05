@@ -1,5 +1,3 @@
-
-
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -26,8 +24,6 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
-
-
 
 /* footer */
 
@@ -58,4 +54,7 @@ footer ul {
 footer ul li {
   float: left;
   margin-left: 15px;
+}
+.well{
+  margin: 50px;
 }
