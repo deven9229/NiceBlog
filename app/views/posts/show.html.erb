@@ -1,7 +1,6 @@
 <br>
-<br>
-<br>
-<h2><%= @post.title %></h2>
+<div class="container">
+<h1><%= @post.title %></h1>
 <p><%= @post.body %></p>
 <hr>
 <%= link_to "Edit", edit_post_path(@post), :class => 'btn btn-primary' %>
@@ -14,3 +13,4 @@ data: {confirm: 'Are you sure?'},
 
 <%= render 'comments/comments' %>
 <%= render 'comments/form' %>
+</div>
