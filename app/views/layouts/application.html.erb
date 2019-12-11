@@ -4,15 +4,15 @@
     <title>Niceblog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-<%= stylesheet_link_tag    'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
-<%= render "layouts/navbar" %>
-<%= render "layouts/alerts" %>
+<body>
+    <%= render "layouts/navbar" %>
+    <%= render "layouts/alerts" %>
+<div class="container">
 <%= yield %>
-<%= render 'layouts/footer' %>
+</div>
+  <%= render 'layouts/footer' %>
 </body>
 </html>

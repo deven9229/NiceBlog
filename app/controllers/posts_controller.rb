@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
    def index
    @posts = Post.all
    end
@@ -10,6 +9,7 @@ class PostsController < ApplicationController
 
    def new
      @post = Post.new
+
    end
 
    def create
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
 
  def update
    @post = Post.find(params[:id])
-   if(@post.update(post_params))
+   if @post.update(post_params)
    redirect_to @post
  else
    render 'edit'
@@ -39,7 +39,9 @@ end
     @post.destroy
     redirect_to posts_path
  end
-   private def post_params
+
+ private
+def post_params
      params.require(:post).permit(:title, :body)
 end
 end
