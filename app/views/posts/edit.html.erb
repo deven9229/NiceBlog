@@ -1,6 +1,6 @@
 <br>
 <h1>Edit Post</h1>
-<div class="container">
+<% if current_user %>
 <%= form_for :post, url: post_path(@post), method: :patch do |f| %>
 <% if @post.errors.any? %>
 <% @post.errors.full_messages.each do |msg| %>
@@ -20,5 +20,8 @@
 <p>
   <%= f.submit({:class => 'btn btn-primary'})%>
 </p>
-</div>
+<% end %>
+<% else %>
+<p style="text-align:center">
+You need to be <%= link_to "Signed in", new_user_session_path %> in order to edit the post</p>
 <% end %>
