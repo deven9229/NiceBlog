@@ -6,4 +6,4 @@ class PostPolicy < ApplicationPolicy
       else
         scope.where(published: true)
       end
-    end
+end
