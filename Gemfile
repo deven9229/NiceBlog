@@ -43,7 +43,7 @@ gem 'tether-rails'
 gem 'simple_form'
 gem 'pundit'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'bootstrap-sass'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
