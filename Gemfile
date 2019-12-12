@@ -43,6 +43,7 @@ gem 'tether-rails'
 gem 'simple_form'
 gem 'pundit'
 gem 'pg', '>= 0.18', '< 2.0'
+gem 'activeadmin'
 
 
 group :development, :test do
