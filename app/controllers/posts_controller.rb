@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
    def create
     # render plain: params[:post].inspect
-    @post = Post.new(post_params)
+     @post = Post.new(post_params.merge(user_id: current_user.id))
     if(@post.save)
     redirect_to @post
   else
