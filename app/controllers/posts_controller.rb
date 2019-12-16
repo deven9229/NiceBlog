@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
 
    def index
-   @posts = Post.all
+     authorize @posts
+     @posts = Post.paginate(page: params[:page])
    end
 
    def show
@@ -9,39 +10,47 @@ class PostsController < ApplicationController
    end
 
    def new
-     @post = Post.new
+      @post = Post.new
    end
 
    def create
     # render plain: params[:post].inspect
-    @post = Post.new(post_params)
-    if(@post.save)
-    redirect_to @post
-  else
-    render 'new'
+      authorize @post
+      @post = Post.new(post_params)
+      if(@post.save)
+        redirect_to @post
+      else
+        render 'new'
    end
  end
 
- def edit
-   @post = Post.find(params[:id])
- end
+    def edit
+      authorize @post
+      @post = Post.find(params[:id])
+
+    end
 
  def update
+   authorize @post
    @post = Post.find(params[:id])
    if @post.update(post_params)
    redirect_to @post
- else
+   else
    render 'edit'
   end
 end
+
   def destroy
+    authorize @post
     @post = Post.find(params[:id])
+  
     @post.destroy
     redirect_to posts_path
  end
 
- private
+private
+
 def post_params
-     params.require(:post).permit(:title, :body)
+     params.require(:post).permit(:title, :body).merge(user_id: current_user.id)
 end
 end
