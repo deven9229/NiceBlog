@@ -44,6 +44,7 @@ gem 'simple_form'
 gem 'pundit'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'activeadmin'
+gem 'will_paginate'
 
 
 group :development, :test do
