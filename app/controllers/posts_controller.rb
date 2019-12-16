@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
    def index
-     authorize @posts
+     authorize :post
      @posts = Post.paginate(page: params[:page])
    end
 
@@ -14,9 +14,9 @@ class PostsController < ApplicationController
    end
 
    def create
-    # render plain: params[:post].inspect
-      authorize @post
+    puts post_params
       @post = Post.new(post_params)
+      authorize @post
       if(@post.save)
         redirect_to @post
       else
@@ -25,14 +25,15 @@ class PostsController < ApplicationController
  end
 
     def edit
-      authorize @post
+
       @post = Post.find(params[:id])
+      authorize @post
 
     end
 
  def update
-   authorize @post
    @post = Post.find(params[:id])
+   authorize @post
    if @post.update(post_params)
    redirect_to @post
    else
@@ -41,9 +42,9 @@ class PostsController < ApplicationController
 end
 
   def destroy
-    authorize @post
+
     @post = Post.find(params[:id])
-  
+    authorize @post
     @post.destroy
     redirect_to posts_path
  end

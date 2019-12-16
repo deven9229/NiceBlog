@@ -5,6 +5,7 @@
     @user = user
     @post = post
   end
+
   def index?
     true
   end
@@ -14,7 +15,7 @@
   end
 
   def edit?
-  user.present?
+   user.present? && user.id == post.user_id
   end
 
   def destroy?
@@ -22,7 +23,7 @@
   end
 
   def update?
-    user.present? && user == post.user
+    user.present? && user.id == post.user_id
   end
 
 end
