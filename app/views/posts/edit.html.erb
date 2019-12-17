@@ -1,9 +1,9 @@
 <h1>Edit Post</h1>
- <% if current_user %>
- <%= form_for :post, url: post_path(@post), method: :patch do |f| %>
- <% if @post.errors.any? %>
- <% @post.errors.full_messages.each do |msg| %>
- <div class="alert alert-danger"><%= msg %> </div>
+<% if current_user %>
+<%= form_for :post, url: post_path(@post), method: :patch do |f| %>
+<% if @post.errors.any? %>
+<% @post.errors.full_messages.each do |msg| %>
+<div class="alert alert-danger"><%= msg %> </div>
 <% end %>
 <% end %>
 
@@ -22,6 +22,6 @@
 </p>
 <% end %>
 <% else %>
- <p style="text-align:center">
- You need to be <%= link_to "Signed in", new_user_session_path %> in order to edit the post</p>
-<% end %>
+<p style="text-align:center">
+  You need to be <%= link_to "Signed in", new_user_session_path %> in order to edit the post</p>
+  <% end %>

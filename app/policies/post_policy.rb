@@ -1,4 +1,4 @@
-  class PostPolicy
+class PostPolicy
   attr_reader :user, :post
 
   def initialize(user, post)
@@ -16,11 +16,11 @@
 
   def edit?
     #return true if user.admin?
-   user.present?  && user.id == post.user_id
+    user.present?  && user.id == post.user_id
   end
 
   def destroy?
-    user.present? &&  user.id == post.user_id 
+    user.present? &&  user.id == post.user_id
   end
 
   def update?
