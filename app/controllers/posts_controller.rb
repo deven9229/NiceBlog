@@ -14,7 +14,7 @@ class PostsController < ApplicationController
    end
 
    def create
-    puts post_params
+      puts post_params
       @post = Post.new(post_params)
       authorize @post
       if(@post.save)
@@ -25,10 +25,8 @@ class PostsController < ApplicationController
  end
 
     def edit
-
-      @post = Post.find(params[:id])
-      authorize @post
-
+     @post = Post.find(params[:id])
+     authorize @post
     end
 
  def update
@@ -42,7 +40,6 @@ class PostsController < ApplicationController
 end
 
   def destroy
-
     @post = Post.find(params[:id])
     authorize @post
     @post.destroy
@@ -51,7 +48,7 @@ end
 
 private
 
-def post_params
+  def post_params
      params.require(:post).permit(:title, :body).merge(user_id: current_user.id)
-end
-end
+   end
+  end

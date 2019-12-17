@@ -15,11 +15,12 @@
   end
 
   def edit?
-   user.present? && user.id == post.user_id
+    #return true if user.admin?
+   user.present?  && user.id == post.user_id
   end
 
   def destroy?
-    user.present?
+    user.present? &&  user.id == post.user_id 
   end
 
   def update?

@@ -5,6 +5,10 @@ has_many :posts
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
+def username
+  return email.split('@')[0].capitalize
+end
+
 def admin?
  role == "admin"
 end

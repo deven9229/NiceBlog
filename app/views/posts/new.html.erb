@@ -1,9 +1,8 @@
-<br>
 <h1>Add post</h1>
-<% if current_user %>
-<%= form_for :post, url: posts_path do |f| %>
-<% if @post.errors.any? %>
-<% @post.errors.full_messages.each do |msg| %>
+ <% if current_user %>
+ <%= form_for :post, url: posts_path do |f| %>
+ <% if @post.errors.any? %>
+ <% @post.errors.full_messages.each do |msg| %>
 <div class="alert alert-danger"><%= msg %> </div>
 <% end %>
 <% end %>
@@ -22,6 +21,6 @@
 </p>
 <% end %>
 <% else %>
-<p style="text-align:center">
-You need to be <%= link_to "Signed in", new_user_session_path %> in order to create a post</p>
+ <p style="text-align:center">
+ You need to be <%= link_to "Signed in", new_user_session_path %> in order to create a post</p>
 <% end %>
