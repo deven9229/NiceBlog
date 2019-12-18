@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :posts
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable, :confirmable
+  enum role: {user: 0, admin: 1}
 
   def username
     return email.split('@')[0].capitalize
@@ -15,10 +16,6 @@ class User < ApplicationRecord
 
   def regular?
     role == "regular"
-  end
-
-  def guest?
-    role == "guest"
   end
 
 end
