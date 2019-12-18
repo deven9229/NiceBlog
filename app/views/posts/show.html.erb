@@ -2,8 +2,8 @@
 <p><%= @post.body %></p>
 <hr>
 
-<%= link_to 'Edit', edit_post_path(@post) if PostPolicy.new(current_user, @post).edit? %>
 <p>By <%= @post.user.email %></p>
+<%= link_to 'Edit', edit_post_path(@post) if PostPolicy.new(current_user, @post).edit? %>
 <%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } if PostPolicy.new(current_user, @post).destroy?%>
 
 <hr>
