@@ -13,10 +13,16 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+<<<<<<< HEAD
   def create
     puts post_params
     @post = Post.new(post_params)
     authorize @post
+=======
+   def create
+    # render plain: params[:post].inspect
+     @post = Post.new(post_params.merge(user_id: current_user.id))
+>>>>>>> 80afbad25d990fa4b86db0725cf25fe46eb54dd6
     if(@post.save)
       redirect_to @post
     else
