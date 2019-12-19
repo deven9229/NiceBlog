@@ -4,18 +4,5 @@ class User < ApplicationRecord
   has_many :posts
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable, :confirmable
-  enum role: {user: 0, admin: 1}
-
-  def username
-    return email.split('@')[0].capitalize
-  end
-
-  def admin?
-    role == "admin"
-  end
-
-  def regular?
-    role == "regular"
-  end
 
 end

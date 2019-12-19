@@ -9,6 +9,4 @@ class ApplicationController < ActionController::Base
     flash[:alert] = "Access denied."
   end
 
-
-
 end
