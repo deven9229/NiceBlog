@@ -15,15 +15,17 @@ class PostPolicy
   end
 
   def edit?
-    #return true if user.admin?
+    return true if user.present? && user.admin?
     user.present?  && user.id == post.user_id
   end
 
   def destroy?
-    user.present? &&  user.id == post.user_id
+    return true if user.present? && user.admin?
+    user.present?  && user.id == post.user_id
   end
 
   def update?
+    return true if user.present? && user.admin?
     user.present? && user.id == post.user_id
   end
 
