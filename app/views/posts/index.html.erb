@@ -2,7 +2,7 @@
 <% @posts.each do |post| %>
 <div class="well">
   <h3><%= post.title %></h3>
-  <p class="text-right">By <%= post.user.email %></p>
+  <p class="text-right">By <%= post.user && post.user.email %></p>
   <p><%= post.body %></p>
   <%= link_to "Read More", post_path(post), :class => 'btn btn-primary' %>
 </div>
