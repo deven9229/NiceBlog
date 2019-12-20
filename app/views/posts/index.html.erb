@@ -1,10 +1,18 @@
-<h1>Blog Posts</h1>
+<div class="column is-8">
+<h1>Blog posts</h1>
 <% @posts.each do |post| %>
-<div class="well">
-  <h3><%= post.title %></h3>
-  <p class="text-right">By <%= post.user && post.user.email %></p>
-  <p><%= post.body %></p>
-  <%= link_to "Read More", post_path(post), :class => 'btn btn-primary' %>
+<div class="columns bb-not-last pv10">
+      <div class="column is-8">
+        <%= link_to post do %>
+          <h3><%= post.title %></h3>
+        <% end %>
+        <div class="body">
+          <%= truncate(post.body, length: 300) %>
+          <p><em><small>Posted <%= time_ago_in_words(post.created_at) %> ago in by <%= post.user && post.user.email %>
+            </small>
+            </em>
+          </p>
+        </div>
 </div>
 <% end %>
 <%= will_paginate(@posts) %>
