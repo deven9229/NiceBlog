@@ -1,26 +1,30 @@
-<h1>Add post</h1>
-<% if current_user %>
-<%= form_for :post, url: posts_path do |f| %>
-<% if @post.errors.any? %>
-<% @post.errors.full_messages.each do |msg| %>
-<div class="alert alert-danger"><%= msg %> </div>
-<% end %>
-<% end %>
-<p>
-  <%= f.label :title %><br>
-  <%= f.text_field(:title, {:class => 'form-control'}) %>
-</p>
+<div class="row">
+  <div class="col-sm-4">
+    <h2>Add post</h2>
+    <% if current_user %>
+    <%= form_for :post, url: posts_path do |f| %>
+    <% if @post.errors.any? %>
+    <% @post.errors.full_messages.each do |msg| %>
+    <div class="alert alert-danger"><%= msg %> </div>
+    <% end %>
+    <% end %>
+    <p>
+      <%= f.label :title %><br>
+      <%= f.text_field(:title, {:class => 'form-control'}) %>
+    </p>
 
-<p>
-  <%= f.label :body %><br>
-  <%= f.text_area(:body, {:class => 'form-control'}) %>
-</p>
+    <p>
+      <%= f.label :body %><br>
+      <%= f.text_area(:body, {:class => 'form-control'}) %>
+    </p>
 
-<p>
-  <%= f.submit({:class => 'btn btn-primary'})%>
-</p>
-<% end %>
-<% else %>
-<p style="text-align:center">
-  You need to be <%= link_to "Signed in", new_user_session_path %> in order to create a post</p>
-  <% end %>
+    <p>
+      <%= f.submit({:class => 'btn btn-primary'})%>
+    </p>
+    <% end %>
+    <% else %>
+    <p style="text-align:center">
+      You need to be <%= link_to "Signed in", new_user_session_path %> in order to create a post</p>
+      <% end %>
+    </div>
+  </div>

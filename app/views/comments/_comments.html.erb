@@ -1,9 +1,11 @@
-<h1>Comments</h1>
-<% @post.comments.each do |comment| %>
-<div class="well">
-  <p><strong><%= comment.username %></strong>: <%= comment.body%></p>
-  <%= link_to '[X]', [comment.post, comment],
-  method: :delete,
-  data: {confirm: 'Are you sure?'} %>
+<div class="row">
+  <div class="col-sm-4">
+    <h3>Comments</h3>
+    <% @post.comments.each do |comment| %>
+    <p><strong><%= comment.username %></strong>: <%= comment.body%></p>
+    <%= link_to '[X]', [comment.post, comment],
+    method: :delete,
+    data: {confirm: 'Are you sure?'} %>
+    <% end %>
+  </div>
 </div>
-<% end %>
