@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
   def index
     authorize :post
-    @posts = Post.paginate(page: params[:page])
+    @posts = Post.paginate(page: params[:page]).all.order(created_at: :desc)
   end
 
   def show
