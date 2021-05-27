@@ -3,6 +3,10 @@ class PostsController < ApplicationController
   def index
     authorize :post
     @posts = Post.paginate(page: params[:page]).all.order(created_at: :desc)
+    respond_to do |format| 
+      format.html { render :index }
+      format.json { render json: @posts }
+    end  
   end
 
   def show
@@ -21,10 +25,14 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params.merge(user_id: current_user.id))
-    if(@post.save)
-      redirect_to @post
-    else
-      render 'new'
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.json { render :show, status: :created, location: @post }
+      else
+        format.html { render :new }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
     end
   end
 
