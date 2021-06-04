@@ -6,7 +6,14 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about', as: 'about'
   get 'contact' => 'pages#contact', as: 'contact'
   
-  resources :posts do
-    resources :comments
+  namespace :api do
+    resources :posts do
+      resources :comments
+    end
   end
+
+  resources :posts do
+      resources :comments
+  end
+
 end

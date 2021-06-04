@@ -1,17 +1,19 @@
-class PostsController < ApplicationController
+class Api::PostsController < ApplicationController
    skip_before_action :verify_authenticity_token
    
   def index
     authorize :post
     @posts = Post.paginate(page: params[:page]).all.order(created_at: :desc)
     respond_to do |format| 
-      format.html { render :index }
       format.json { render json: @posts }
     end  
   end
 
   def show
     @post = Post.find(params[:id])
+    respond_to do |format|
+      format.json { render :json => @post.to_json }
+    end
   end
 
   def new
@@ -22,10 +24,8 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
+        format.json { render json: @post }
       else
-        format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
@@ -56,6 +56,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :body)
   end
 end
